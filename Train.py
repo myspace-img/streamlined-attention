@@ -39,30 +39,26 @@ testdata_transforms = transforms.Compose([
                         transforms.ToTensor(),
                         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])
 
-# cars_train = r'C:\Users\Lalith_B\Desktop\Gnyan ResNet\Datasets\cars\stanford-car-dataset-by-classes-folder-224\car_data\train'
-# cars_test = r'C:\Users\Lalith_B\Desktop\Gnyan ResNet\Datasets\cars\stanford-car-dataset-by-classes-folder-224\car_data\test'
 
-# aircrafts_train = r'C:\Users\Lalith_B\Desktop\Gnyan ResNet\Datasets\aircrafts\train'
-# aircrafts_test = r'C:\Users\Lalith_B\Desktop\Gnyan ResNet\Datasets\aircrafts\train'
+
+aircrafts_train = r'C:\Users\Lalith_B\Desktop\Gnyan ResNet\Datasets\aircrafts\train'
+aircrafts_test = r'C:\Users\Lalith_B\Desktop\Gnyan ResNet\Datasets\aircrafts\train'
 
 # cifar10_train = CIFAR10(download=True,root="./data",transform=traindata_transforms)
 # cifar10_test = CIFAR10(root="./data",train=False,transform=testdata_transforms)
 
-birds_train = r'C:\Users\Lalith_B\Desktop\Gnyan ResNet\Datasets\birds\Train'
-birds_test = r'C:\Users\Lalith_B\Desktop\Gnyan ResNet\Datasets\birds\Test'
-
 # cifar100_train = CIFAR100(download=True,root="./data",transform=traindata_transforms)
 # cifar100_test = CIFAR100(root="./data",train=False,transform=testdata_transforms)
 
-train_transforms = datasets.ImageFolder(os.path.join(birds_train), traindata_transforms)
-test_transforms = datasets.ImageFolder(os.path.join(birds_test), testdata_transforms)
+train_transforms = datasets.ImageFolder(os.path.join(aircrafts_train), traindata_transforms)
+test_transforms = datasets.ImageFolder(os.path.join(aircrafts_test), testdata_transforms)
 batch_size = 128
 
 train_dl = DataLoader(train_transforms, batch_size, shuffle=True) 
 test_dl = DataLoader(test_transforms, batch_size, shuffle=True) 
 
-# class_names = os.listdir(r'C:\Users\cgnya\OneDrive\Desktop\Work\Datasets\aircrafts\train')
-class_names = os.listdir(r'C:\Users\Lalith_B\Desktop\Gnyan ResNet\Datasets\birds\Train')
+class_names = os.listdir(r'C:\Users\cgnya\OneDrive\Desktop\Work\Datasets\aircrafts\train')
+
 
 # class_names = ['1']*10
 # class_names = ['1']*100
