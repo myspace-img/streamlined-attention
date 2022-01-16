@@ -20,7 +20,7 @@ In a way we can interpret the combination of both channel and spatial attention 
 The proposed works under this tasks has motivated me to work for a proposal of a novel module. Moreover, the implementations of these models were inclined towards image classfication task on the traditional datasets like CIFAR10 & CIFAR100. Hence, taking this aspect under consideration, the proposed module has been is designed in such way that it not only supports in increasing efficiency of the image classification task whereas performs more accurately for the task of fine-grained visual recognition.  
 
 ## Model and its architecture
-The proposed model is described as Streamlined attention module. This model was built under a task specification of fine-grained visual recognition and image classification. The utilized encoder for this model was Residual neural network i.e., ResNet. The basic convention of this residual neural network is to process the given input via a skip connection based mechanism where in the intial hypothesis of the work stood to be that this mechanism would help in proving better longer range denpendency based features which also helps in eliminating the concept of proceeding for depth in number of convolutions.
+The proposed model is described as Streamlined attention module due to its tendency of proving more accuracy with less number of additional layers. This model was built under a task specification of fine-grained visual recognition and image classification. The utilized encoder for this model was Residual neural network i.e., ResNet. The basic convention of this residual neural network is to process the given input via a skip connection based mechanism where in the intial hypothesis of the work stood to be that this mechanism would help in proving better longer range denpendency based features which also helps in eliminating the concept of proceeding for depth in number of convolutions.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/67636257/149652989-4a1389df-da08-4e91-b416-3d6d64d6b7cc.png" width="500" height="400">
 </p>
@@ -34,9 +34,12 @@ The proposed module consists of 2 layers with an additional functional mechanism
 
 The reason for allotting GAP layer right after the previous convolution is because global average pooling layer has the efficienvy of providing convienent feature refinement through its procedure of pooling the weights globally and applying the mean operation, bringing down to an efficient 1D-convolution. This layer is followed by a FC/Linear layer which deals with compression of the produced 1D convolution from its preceding GAP layer. This ensures to provide channel attention. Further, the feature obtained from the linear layer go through an element-wise pooling operation with the features extracted from the initial input. This process ensures to provide spatial attention as this operation deals with the production of covariance matrices embedded with essential attentive features. This overall module is injected right before teh skip connection in the traditional ResNet architecture as illutrated in the below figure as embedded feature vector **_f<sub>v</sub>_**.
 
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/67636257/149658786-f7054a32-141b-4b88-bfc6-ffdde04dbc72.png" width="650" height="275">
 </p>
+
+Training of this model has been done wisely considering multiple factors. As the proposed model is inclined likely towards production of truthful results under the fine-grained visual recognition task i.e., pertained to use FGVC-Aircrafts dataset (dataset description presented below), an image size od 192x192 had been set with a batch size of 128 and while considering image classification for CIFAR-10 and CIFAR-100, an image size of 64x64 has been considered with a consistent number of epochs to be 45 and early stopping patience preset to 12 likely reproduced iterations.
 
 ## Training parameters
 **Optimizer** - Adam with learning rate of 10<sup>-4</sup><br/>
@@ -67,6 +70,16 @@ PIL for Image processing for CAM visualization<br/>
 Model_zoo for pipelining weights of the required encoder<br/>
 
 ## Results
+After an 10x iterative procedure of training the model, the obtained results were efficient compared to that of the previously exisiting models out there. The module was inculcated with ResNet-50, ResNet-101 and ResNet-154. The obtained results under each task with respect to each dataset are illustrated below for the model encoder ResNet-50.
+
+| Datasets  | Task |Accuracy | 
+| ------------- | ------------- | ------------- |
+| CIFAR-10  | Image Classification | 89.45  | 
+| CIFAR-100  | Image Classification | 70.19 |
+| FGVC-Aircrafts  | Fine-grained Visual Recognition | **97.27** | 
+
+The FGVC-Aircrafts dataset obtained state-of-the-art results with an accuracy of **97.27%**.
+The visualizations for the obtained results have been proved through Class activation maps as illustrated below. These maps prove the features on the given image patch through an heatmap perceptioni i.e., the most concentrated, here, the highly attentive region in an image is visualized (as red) to be most attentive and the image partial with less intensity in attention are seen to be less concentrated. As the features are also considered to the outputs of the activations generated in a neural network pertaining to predict a required class in a presented image, the mechanism is named after "class activation" maps.
 
 <p align='center'>
 <img src="https://user-images.githubusercontent.com/67636257/149658646-b4bb350a-bcbf-406c-974d-f63007e18cff.png" height="600">
