@@ -20,21 +20,33 @@ In a way we can interpret the combination of both channel and spatial attention 
 The proposed works under this tasks has motivated me to work for a proposal of a novel module. Moreover, the implementations of these models were inclined towards image classfication task on the traditional datasets like CIFAR10 & CIFAR100. Hence, taking this aspect under consideration, the proposed module has been is designed in such way that it not only supports in increasing efficiency of the image classification task whereas performs more accurately for the task of fine-grained visual recognition.  
 
 ### Model and its architecture
-The proposed model is described as Streamlined attention module. This model was built under a tsask specification of fine-grained visual recognition and image classification. The utilized encoder for this model was Residual neural network i.e., ResNet. The basic convention of this residual neural network is to process the given input via a skip connection based mechanism where in the intial hypothesis of the work stood to be that this mechanism would help in proving better longer range denpendency based features which also helps in eliminating the concept of proceeding for depth in number of convolutions.
+The proposed model is described as Streamlined attention module. This model was built under a task specification of fine-grained visual recognition and image classification. The utilized encoder for this model was Residual neural network i.e., ResNet. The basic convention of this residual neural network is to process the given input via a skip connection based mechanism where in the intial hypothesis of the work stood to be that this mechanism would help in proving better longer range denpendency based features which also helps in eliminating the concept of proceeding for depth in number of convolutions.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/67636257/149652989-4a1389df-da08-4e91-b416-3d6d64d6b7cc.png" width="500" height="400">
 </p>
-The traditional ResNet have been proved in the above figure illustrated. In the proposed model, through an applied research approach, there has been a proposal of few additional layers right before the skip connection concatenates with the latest convolution layer, as illustrated above. The value added by these addiional layers have been described below. 
+The traditional ResNet have been proved in the above figure illustrated. In the proposed model, through an applied research approach, there has been a proposal of few additional layers right before the skip connection concatenates with the latest convolution layer, as illustrated above. The value added by these addiional layers have been described below.
 
 #### Architecture
+The proposed module consists of 2 layers with an additional functional mechanism. The 2 additional layers are GAP-global average pooling layer and FC/Linear layer attached one after the other. After this layer, the illustrated functional mechanism deals with second order pooling which results in processing an element-wise multiplication operation  producing higher order features due to its tendency of collecting the additional valuable information through an outer-product mathematical operation as a function. Whenever the higher order features are captured they have the tendency to be more effective their capability of enriching the non-linear modelling. The below presented image illustrates the proposed module in detail. 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/67636257/149658770-6761d894-7acc-4e4e-997a-1e272f34fd8b.png" width="450" height="250">
 </p>
 
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/67636257/149658786-f7054a32-141b-4b88-bfc6-ffdde04dbc72.png" width="550" height="300">
 </p>
+### Training parameters
+Optimizer - Adam
+Loss Function - Categorical Cross Entropy
 
+### Dataset Description
+The model was trained and tested on CIFAR-10, CIFAR-100 & FGVC-Aircrafts dataset.
+| Datasets  | No.of classes | Train Samples | Test Samples |
+| ------------- | ------------- | ------------- | ------------- |
+| CIFAR-10  | 10  | 50k  | 10k  |
+| CIFAR-100  | 100  | 50k  | 10k |
+| FGVC-Aircrafts  | 100 | 6.6k  | 3.3k  |
 
 
 ### Results
