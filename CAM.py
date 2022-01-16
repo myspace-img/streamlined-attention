@@ -12,15 +12,10 @@ import skimage.transform
 image = Image.open("0097935.jpg")
 imshow(image)   
 
-# Imagenet mean/std
-
 normalize = transforms.Normalize(
    mean=[0.485, 0.456, 0.406],
    std=[0.229, 0.224, 0.225]
 )
-
-# Preprocessing - scale to 224x224 for model, convert to tensor, 
-# and normalize to -1..1 with mean/std for ImageNet
 
 preprocess = transforms.Compose([
    transforms.Resize((192,192)),
@@ -74,10 +69,3 @@ imshow(overlay[0], alpha=0.5, cmap='jet')
 imshow(display_transform(image))
 imshow(skimage.transform.resize(overlay[0], tensor.shape[1:3]), alpha=0.5, cmap='jet');
 
-# class_idx = topk(pred_probabilities,2)[1].int()
-# class_idx
-
-# overlay = getCAM(activated_features.features, weight_softmax, 332 )
-
-# imshow(display_transform(image))
-# imshow(skimage.transform.resize(overlay[0], tensor.shape[1:3]), alpha=0.5, cmap='jet');
