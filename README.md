@@ -35,7 +35,7 @@ The proposed module consists of 2 layers with an additional functional mechanism
 The reason for allotting GAP layer right after the previous convolution is because global average pooling layer has the efficienvy of providing convienent feature refinement through its procedure of pooling the weights globally and applying the mean operation, bringing down to an efficient 1D-convolution. This layer is followed by a FC/Linear layer which deals with compression of the produced 1D convolution from its preceding GAP layer. This ensures to provide channel attention. Further, the feature obtained from the linear layer go through an element-wise pooling operation with the features extracted from the initial input. This process ensures to provide spatial attention as this operation deals with the production of covariance matrices embedded with essential attentive features. This overall module is injected right before teh skip connection in the traditional ResNet architecture as illutrated in the below figure as embedded feature vector **_f<sub>v</sub>_**.
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/67636257/149658786-f7054a32-141b-4b88-bfc6-ffdde04dbc72.png" width="550" height="300">
+<img src="https://user-images.githubusercontent.com/67636257/149658786-f7054a32-141b-4b88-bfc6-ffdde04dbc72.png" width="650" height="275">
 </p>
 
 ## Training parameters
@@ -53,17 +53,22 @@ The model was trained and tested on CIFAR-10, CIFAR-100 & FGVC-Aircrafts dataset
 | FGVC-Aircrafts  | 100 | 6.6k  | 3.3k  |
 
 
-## Results
-
-<p align='center'>
-<img src="https://user-images.githubusercontent.com/67636257/149658646-b4bb350a-bcbf-406c-974d-f63007e18cff.png" height="600">
-</p>
-
 ## Training requirements
 This model was trained on NVIDIA RTX A4000 16GB vRAM GPU.<br/>
 
 Python >= *3.0*<br/>
 PyTorch Version >= *0.4.0*<br/>
 torchvision >= *0.2.1*<br/>
-NumPy [Mathematical c]
-Mat
+NumPy <br/>
+Matplotlib<br/>
+Pandas<br/>
+Math<br/>
+PIL for Image processing for CAM visualization<br/>
+Model_zoo for pipelining weights of the required encoder<br/>
+
+## Results
+
+<p align='center'>
+<img src="https://user-images.githubusercontent.com/67636257/149658646-b4bb350a-bcbf-406c-974d-f63007e18cff.png" height="600">
+</p>
+
