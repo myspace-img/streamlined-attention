@@ -60,5 +60,10 @@ The model was trained and tested on CIFAR-10, CIFAR-100 & FGVC-Aircrafts dataset
 </p>
 
 ## Training requirements
-This model was trained on NVIDIA RTX A4000 16GB vRAM GPU.
-Python 
+This model was trained on NVIDIA RTX A4000 16GB vRAM GPU.<br/>
+
+Python >= *3.0*<br/>
+PyTorch Version >= *0.4.0*<br/>
+torchvision >= *0.2.1*<br/>
+NumPy [Mathematical c]
+Mat
