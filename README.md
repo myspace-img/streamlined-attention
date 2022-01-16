@@ -70,7 +70,7 @@ PIL for Image processing for CAM visualization<br/>
 Model_zoo for pipelining weights of the required encoder<br/>
 
 ## Results
-After an 10x iterative procedure of training the model, the obtained results were efficient compared to that of the previously exisiting models out there. The module was inculcated with ResNet-50, ResNet-101 and ResNet-154. The obtained results under each task with respect to each dataset are illustrated below for the model encoder ResNet-50.
+After an 10x iterative procedure of training the model, the obtained results were efficient compared to that of the previously exisiting models out there. The module was inculcated with pretrained ResNet-50, ResNet-101 and ResNet-152 on Imagenet. The obtained results under each task with respect to each dataset are illustrated below for the model encoder ResNet-50.
 
 | Datasets  | Task |Accuracy | 
 | ------------- | ------------- | ------------- |
@@ -78,10 +78,13 @@ After an 10x iterative procedure of training the model, the obtained results wer
 | CIFAR-100  | Image Classification | 70.19 |
 | FGVC-Aircrafts  | Fine-grained Visual Recognition | **97.27** | 
 
-The FGVC-Aircrafts dataset obtained state-of-the-art results with an accuracy of **97.27%**.
+The FGVC-Aircrafts dataset obtained state-of-the-art results with an accuracy of **97.27%**.<br/> Similarly, the model outperformed other existing models under datasets of CIFAR-10 & CIFAR-100.<br/>
 The visualizations for the obtained results have been proved through Class activation maps as illustrated below. These maps prove the features on the given image patch through an heatmap perceptioni i.e., the most concentrated, here, the highly attentive region in an image is visualized (as red) to be most attentive and the image partial with less intensity in attention are seen to be less concentrated. As the features are also considered to the outputs of the activations generated in a neural network pertaining to predict a required class in a presented image, the mechanism is named after "class activation" maps.
 
 <p align='center'>
 <img src="https://user-images.githubusercontent.com/67636257/149658646-b4bb350a-bcbf-406c-974d-f63007e18cff.png" height="600">
 </p>
+
+## Future Scope
+There is a hypothesis that this model would equally work well on Medical imagery as well. This hypothesis has been taken under consideration and the experimentation has begun. The work might be proved as soon as the expected is obtained.
 
